@@ -2,8 +2,23 @@
 
 public class Utils
 {
+    public static Dictionary<char, int> CalcCountChars(string text)
+    {
+        var result = new Dictionary<char, int>();
+        foreach (var ch in text)
+        {
+            if (result.ContainsKey(ch))
+                result[ch]++;
+            else
+                result[ch] = 1;
+        }
+
+        return result;
+    }
+
     public static string EvenOrOddReverseTextFunc(string text)
     {
+        
         if (text.Length % 2 == 0)
         {
             var halfTextIndex = text.Length / 2;
