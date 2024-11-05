@@ -18,7 +18,9 @@ else
 {
     var result = Utils.EvenOrOddReverseTextFunc(line);
     var charsCount = Utils.CalcCountChars(result);
+    var vowelLargestSubString = Utils.FindMaxLengthSubStringOfVowelChars(result);
     Console.WriteLine($"Result: \"{line}\" -> \"{result}\"");
     Console.WriteLine("Counts of chars in result line:");
     Console.WriteLine(string.Join("\n", charsCount.Select(pair => $"\"{pair.Key}\": {pair.Value}")));
+    Console.WriteLine($"Largest vowel substring: \"{vowelLargestSubString}\"");
 }

@@ -2,20 +2,6 @@
 
 public class Utils
 {
-    public static Dictionary<char, int> CalcCountChars(string text)
-    {
-        var result = new Dictionary<char, int>();
-        foreach (var ch in text)
-        {
-            if (result.ContainsKey(ch))
-                result[ch]++;
-            else
-                result[ch] = 1;
-        }
-
-        return result;
-    }
-
     public static string EvenOrOddReverseTextFunc(string text)
     {
         
@@ -39,5 +25,39 @@ public class Utils
         }
 
         return unexpectedChars;
+    }
+    
+    public static Dictionary<char, int> CalcCountChars(string text)
+    {
+        var result = new Dictionary<char, int>();
+        foreach (var ch in text)
+        {
+            if (result.ContainsKey(ch))
+                result[ch]++;
+            else
+                result[ch] = 1;
+        }
+
+        return result;
+    }
+
+    public static string FindMaxLengthSubStringOfVowelChars(string text)
+    {
+        var vowelChars = "aeiouy";
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (vowelChars.Contains(text[i]))
+            {
+                for (var j = text.Length - 1; j >= i; j--)
+                {
+                    if (vowelChars.Contains(text[j]))
+                    {
+                        return text.Substring(i, j - i + 1);
+                    }
+                }
+            }
+        }
+
+        return string.Empty;
     }
 }
