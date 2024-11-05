@@ -1,4 +1,5 @@
 ﻿using MaximCSTasks;
+using MaximCSTasks.Sorters;
 
 Console.Write("Enter your line: ");
 var line = Console.ReadLine();
@@ -19,8 +20,10 @@ else
     var result = Utils.EvenOrOddReverseTextFunc(line);
     var charsCount = Utils.CalcCountChars(result);
     var vowelLargestSubString = Utils.FindMaxLengthSubStringOfVowelChars(result);
+    var sortedResultLine = StringQuickSorter.SortString(result);
     Console.WriteLine($"Result: \"{line}\" -> \"{result}\"");
     Console.WriteLine("Counts of chars in result line:");
     Console.WriteLine(string.Join("\n", charsCount.Select(pair => $"\"{pair.Key}\": {pair.Value}")));
     Console.WriteLine($"Largest vowel substring: \"{vowelLargestSubString}\"");
+    Console.WriteLine($"Sorted result line: \"{sortedResultLine}\"");
 }
