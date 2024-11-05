@@ -20,7 +20,7 @@ else
     var result = Utils.EvenOrOddReverseTextFunc(line);
     var charsCount = Utils.CalcCountChars(result);
     var vowelLargestSubString = Utils.FindMaxLengthSubStringOfVowelChars(result);
-    var sortedResultLine = StringQuickSorter.SortString(result);
+    var sortedResultLine = new StringTreeSorter().SortString(result);
     Console.WriteLine($"Result: \"{line}\" -> \"{result}\"");
     Console.WriteLine("Counts of chars in result line:");
     Console.WriteLine(string.Join("\n", charsCount.Select(pair => $"\"{pair.Key}\": {pair.Value}")));

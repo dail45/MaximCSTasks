@@ -2,5 +2,5 @@
 
 public interface StringSorterInterface
 {
-    string SortString(string input);
+    public string SortString(string input);
 }

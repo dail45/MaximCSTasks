@@ -1,6 +1,6 @@
 ﻿namespace MaximCSTasks.Sorters;
 
-public class StringQuickSorter
+public class StringQuickSorter: StringSorterInterface
 {
     private static int partition(char[] text, int start, int end)
     {
@@ -29,7 +29,7 @@ public class StringQuickSorter
         }
     }
 
-    public static string SortString(string text)
+    public string SortString(string text)
     {
         var result = text.ToCharArray();
         QuickSort(result, 0, result.Length - 1);
