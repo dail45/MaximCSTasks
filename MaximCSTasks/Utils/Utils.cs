@@ -1,4 +1,6 @@
-﻿namespace MaximCSTasks;
+﻿using MaximCSTasks.Services;
+
+namespace MaximCSTasks;
 
 public class Utils
 {
@@ -59,5 +61,12 @@ public class Utils
         }
 
         return string.Empty;
+    }
+    
+    public static string RemoveRandomCharInString(string text)
+    {
+        var rngService = RandomNumberGeneratorService.GetInstance;
+        var randomNumber = rngService.GetRandomNumber(0, text.Length - 1);
+        return text.Remove(randomNumber, 1);
     }
 }

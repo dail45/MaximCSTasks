@@ -36,9 +36,11 @@ else
     var charsCount = Utils.CalcCountChars(result);
     var vowelLargestSubString = Utils.FindMaxLengthSubStringOfVowelChars(result);
     var sortedResultLine = sorter.SortString(result);
+    var resultLineWithoutRandomChar = Utils.RemoveRandomCharInString(result);
     Console.WriteLine($"Result: \"{inputLine}\" -> \"{result}\"");
     Console.WriteLine("Counts of chars in result line:");
     Console.WriteLine(string.Join("\n", charsCount.Select(pair => $"\"{pair.Key}\": {pair.Value}")));
     Console.WriteLine($"Largest vowel substring: \"{vowelLargestSubString}\"");
     Console.WriteLine($"Sorted result line: \"{sortedResultLine}\"");
+    Console.WriteLine($"Result line without random char: \"{resultLineWithoutRandomChar}\"");
 }
