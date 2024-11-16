@@ -4,16 +4,16 @@ namespace MaximCSTasks.Services;
 
 public class RandomNumberGeneratorService
 {
-    private static readonly RandomNumberGeneratorService Instance;
+    private static readonly RandomNumberGeneratorService _instance;
 
     static RandomNumberGeneratorService()
     {
-        Instance = new RandomNumberGeneratorService();
+        _instance = new RandomNumberGeneratorService();
     }
     
     private RandomNumberGeneratorService() { }
     
-    public static RandomNumberGeneratorService GetInstance => Instance;
+    public static RandomNumberGeneratorService Instance => _instance;
     
 
     private readonly RemoteRandomNumberGenerator _remoteRandomNumberGenerator = new RemoteRandomNumberGenerator();

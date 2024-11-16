@@ -20,6 +20,7 @@ public class RandomAPI
         rsp.EnsureSuccessStatusCode();
         var stringRsp = await rsp.Content.ReadAsStringAsync();
         var jsonRsp = JsonSerializer.Deserialize<List<int>>(stringRsp);
+        
         if (jsonRsp == null || jsonRsp.Count < 1)
         {
             throw new ApplicationException("Invalid JSON");
