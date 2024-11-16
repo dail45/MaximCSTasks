@@ -1,7 +1,7 @@
 ﻿using MaximCSTasks.Apis;
 namespace MaximCSTasks.RandomNumberGenerator;
 
-public class RemoteRandomNumberGenerator
+public class RemoteRandomNumberGenerator: RandomNumberGeneratorInterface
 {
     private readonly RandomAPI _randomApi = new RandomAPI();
     
