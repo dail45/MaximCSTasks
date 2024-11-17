@@ -6,26 +6,26 @@ using Microsoft.VisualBasic;
 
 namespace MaximCSTasks.Services;
 
-public class StringProcessorService
+public class StringProcessorService : IStringProcessorService
 {
-    private static readonly StringProcessorService _instance;
-
-    static StringProcessorService()
+    private IRandomNumberGeneratorService _randomNumberGeneratorService;
+    private readonly IConfiguration _configuration;
+    public StringProcessorService(IRandomNumberGeneratorService randomNumberGeneratorService, IConfiguration configuration)
     {
-        _instance = new StringProcessorService();
+        _randomNumberGeneratorService = randomNumberGeneratorService;
+        _configuration = configuration;
     }
-
-    private StringProcessorService()
-    {
-    }
-
-    public static StringProcessorService Instance => _instance;
 
     public StringProcessorResult ProcessLine(string line, string sorterType)
     {
         if (string.IsNullOrEmpty(line))
         {
             return StringProcessorResult.Empty;
+        }
+
+        if (_configuration.GetSection("AppSettings:BlackList").Get<List<string>>().Contains(line))
+        {
+            return StringProcessorResult.BlackList;
         }
 
         if (string.IsNullOrEmpty(sorterType) || sorterType.Length > 1 || !new[] { "q", "t" }.Contains(sorterType))

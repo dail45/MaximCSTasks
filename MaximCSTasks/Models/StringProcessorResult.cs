@@ -25,24 +25,24 @@ public record StringProcessorResult(
     string Error
 )
 {
-    [JsonIgnore]
-    public static StringProcessorResult Empty => new(
-        Data: StringProcessorData.Empty,
-        Error: "Your line is null or empty."
-    );
+    private static StringProcessorResult ErrorMsg(string error)
+    {
+        if (error == null) throw new ArgumentNullException(nameof(error));
+        return new StringProcessorResult(Data: StringProcessorData.Empty, Error: error);
+    }
     
     [JsonIgnore]
-    public static StringProcessorResult InvalidSorter => new(
-        Data: StringProcessorData.Empty,
-        Error: "Sorter type is invalid."
-    );
+    public static StringProcessorResult Empty => ErrorMsg("Your line is null or empty.");
+    
+    [JsonIgnore]
+    public static StringProcessorResult InvalidSorter => ErrorMsg("Sorter type is invalid.");
+    
+    [JsonIgnore]
+    public static StringProcessorResult BlackList => ErrorMsg("Your line is in a blacklist.");
 
     public static StringProcessorResult UnexpectedChars(List<char> unexpectedChars)
     {
-        return new StringProcessorResult(
-            Data: StringProcessorData.Empty,
-            Error: "Your line contains unexpected characters: " +
-                   string.Join(", ", unexpectedChars.Select(ch => $"\"{ch}\""))
-        );
+        return ErrorMsg("Your line contains unexpected characters: " +
+                        string.Join(", ", unexpectedChars.Select(ch => $"\"{ch}\"")));
     }
 }

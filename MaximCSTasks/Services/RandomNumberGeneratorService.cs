@@ -2,21 +2,16 @@
 
 namespace MaximCSTasks.Services;
 
-public class RandomNumberGeneratorService
+public class RandomNumberGeneratorService : IRandomNumberGeneratorService
 {
-    private static readonly RandomNumberGeneratorService _instance;
-
-    static RandomNumberGeneratorService()
+    public static RandomNumberGeneratorService Instance { get; private set; }
+    public RandomNumberGeneratorService(IConfiguration configuration)
     {
-        _instance = new RandomNumberGeneratorService();
+        _remoteRandomNumberGenerator = new RemoteRandomNumberGenerator(configuration);
+        Instance = this;
     }
-    
-    private RandomNumberGeneratorService() { }
-    
-    public static RandomNumberGeneratorService Instance => _instance;
-    
 
-    private readonly RemoteRandomNumberGenerator _remoteRandomNumberGenerator = new RemoteRandomNumberGenerator();
+    private readonly RemoteRandomNumberGenerator _remoteRandomNumberGenerator;
     private readonly LocalRandomNumberGenerator _localRandomNumberGenerator = new LocalRandomNumberGenerator();
     
     public int GetRandomNumber(int min, int max)

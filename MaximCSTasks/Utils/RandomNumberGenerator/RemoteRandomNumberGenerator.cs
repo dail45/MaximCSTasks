@@ -3,7 +3,12 @@ namespace MaximCSTasks.RandomNumberGenerator;
 
 public class RemoteRandomNumberGenerator: RandomNumberGeneratorInterface
 {
-    private readonly RandomAPI _randomApi = new RandomAPI();
+    private readonly RandomAPI _randomApi;
+
+    public RemoteRandomNumberGenerator(IConfiguration configuration)
+    {
+        _randomApi = new RandomAPI(configuration);
+    }
     
     public int GetRandomNumber(int min, int max)
     {

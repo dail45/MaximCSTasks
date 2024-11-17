@@ -1,8 +1,12 @@
 ﻿using System.Reflection;
 using MaximCSTasks;
+using MaximCSTasks.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+
+builder.Services.AddSingleton<IStringProcessorService, StringProcessorService>();
+builder.Services.AddSingleton<IRandomNumberGeneratorService, RandomNumberGeneratorService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
