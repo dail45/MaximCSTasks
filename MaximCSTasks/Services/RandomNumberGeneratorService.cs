@@ -1,14 +1,12 @@
-﻿using MaximCSTasks.RandomNumberGenerator;
+﻿using MaximCSTasks.Utils.RandomNumberGenerator;
 
 namespace MaximCSTasks.Services;
 
 public class RandomNumberGeneratorService : IRandomNumberGeneratorService
 {
-    public static RandomNumberGeneratorService Instance { get; private set; }
     public RandomNumberGeneratorService(IConfiguration configuration)
     {
         _remoteRandomNumberGenerator = new RemoteRandomNumberGenerator(configuration);
-        Instance = this;
     }
 
     private readonly RemoteRandomNumberGenerator _remoteRandomNumberGenerator;

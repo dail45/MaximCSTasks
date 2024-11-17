@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using MaximCSTasks;
+using MaximCSTasks.Utils;
 using MaximCSTasks.Services;
 
 var builder = WebApplication.CreateBuilder(args);
