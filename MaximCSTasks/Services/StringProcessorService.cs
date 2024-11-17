@@ -23,7 +23,7 @@ public class StringProcessorService : IStringProcessorService
             return StringProcessorResult.Empty;
         }
 
-        if (_configuration.GetSection("AppSettings:BlackList").Get<List<string>>().Contains(line))
+        if (_configuration.GetSection("AppSettings:Settings:BlackList").Get<List<string>>().Contains(line))
         {
             return StringProcessorResult.BlackList;
         }
