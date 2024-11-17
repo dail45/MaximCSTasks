@@ -8,15 +8,17 @@ namespace MaximCSTasks.Apis;
 public class RandomAPI
 {
     private static readonly HttpClient _httpClient = new HttpClient();
+    private readonly IConfiguration _configuration;
     
-    public RandomAPI()
+    public RandomAPI(IConfiguration configuration)
     {
-        _httpClient.BaseAddress = new Uri("http://www.randomnumberapi.com/api/v1.0/");
+        _configuration = configuration;
+        _httpClient.BaseAddress = new Uri(configuration["AppSettings:RandomAPI:URL"]);
     }
 
     public async Task<int> GetAsyncRandomNumber(int min, int max)
     {
-        var rsp = await _httpClient.GetAsync($"random?min={min}&max={max}&count=1");
+        var rsp = await _httpClient.GetAsync($"{_configuration["AppSettings:RandomAPI:Path"]}?min={min}&max={max}&count=1");
         rsp.EnsureSuccessStatusCode();
         var stringRsp = await rsp.Content.ReadAsStringAsync();
         var jsonRsp = JsonSerializer.Deserialize<List<int>>(stringRsp);

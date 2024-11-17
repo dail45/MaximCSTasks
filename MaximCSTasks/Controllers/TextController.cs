@@ -10,11 +10,11 @@ namespace MaximCSTasks.Controllers;
 [Route("api/[controller]")]
 public class TextController: ControllerBase
 {
-    private readonly StringProcessorService _stringProcessorService;
+    private readonly IStringProcessorService _stringProcessorService;
 
-    public TextController()
+    public TextController(IStringProcessorService stringProcessorService)
     {
-        _stringProcessorService = StringProcessorService.Instance;
+        _stringProcessorService = stringProcessorService;
     }
     
     /// <response code="200">OK</response>
