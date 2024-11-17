@@ -1,5 +1,6 @@
-﻿using MaximCSTasks.Apis;
-namespace MaximCSTasks.RandomNumberGenerator;
+﻿using MaximCSTasks.Utils.Apis;
+
+namespace MaximCSTasks.Utils.RandomNumberGenerator;
 
 public class RemoteRandomNumberGenerator: RandomNumberGeneratorInterface
 {

@@ -1,4 +1,4 @@
-﻿namespace MaximCSTasks.RandomNumberGenerator;
+﻿namespace MaximCSTasks.Utils.RandomNumberGenerator;
 
 public class LocalRandomNumberGenerator: RandomNumberGeneratorInterface
 {

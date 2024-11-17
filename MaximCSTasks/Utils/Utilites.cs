@@ -1,12 +1,11 @@
 ﻿using MaximCSTasks.Services;
 
-namespace MaximCSTasks;
+namespace MaximCSTasks.Utils;
 
-public class Utils
+public class Utilites
 {
     public static string EvenOrOddReverseTextFunc(string text)
     {
-        
         if (text.Length % 2 == 0)
         {
             var halfTextIndex = text.Length / 2;
@@ -63,9 +62,8 @@ public class Utils
         return string.Empty;
     }
     
-    public static string RemoveRandomCharInString(string text)
+    public static string RemoveRandomCharInString(string text, IRandomNumberGeneratorService rngService)
     {
-        var rngService = RandomNumberGeneratorService.Instance;
         var randomNumber = rngService.GetRandomNumber(0, text.Length - 1);
         return text.Remove(randomNumber, 1);
     }

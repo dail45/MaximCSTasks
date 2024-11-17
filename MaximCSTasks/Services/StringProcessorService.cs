@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.Text.Json;
+using MaximCSTasks.Utils;
 using MaximCSTasks.Models;
 using MaximCSTasks.Sorters;
 using Microsoft.VisualBasic;
@@ -38,17 +39,17 @@ public class StringProcessorService : IStringProcessorService
             "q" => new StringQuickSorter(),
             "t" => new StringTreeSorter()
         };
-        var unexpectedChars = Utils.CheckOnlyEnglishChars(line);
+        var unexpectedChars = Utilites.CheckOnlyEnglishChars(line);
         if (unexpectedChars.Count > 0)
         {
             return StringProcessorResult.UnexpectedChars(unexpectedChars);
         }
 
-        var result = Utils.EvenOrOddReverseTextFunc(line);
-        var charsCount = Utils.CalcCountChars(result);
-        var vowelLargestSubString = Utils.FindMaxLengthSubStringOfVowelChars(result);
+        var result = Utilites.EvenOrOddReverseTextFunc(line);
+        var charsCount = Utilites.CalcCountChars(result);
+        var vowelLargestSubString = Utilites.FindMaxLengthSubStringOfVowelChars(result);
         var sortedResultLine = sorter.SortString(result);
-        var resultLineWithoutRandomChar = Utils.RemoveRandomCharInString(result);
+        var resultLineWithoutRandomChar = Utilites.RemoveRandomCharInString(result, _randomNumberGeneratorService);
 
         var resultData = new StringProcessorData(
             result, 

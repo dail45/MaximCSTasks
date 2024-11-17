@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
-namespace MaximCSTasks.Apis;
+namespace MaximCSTasks.Utils.Apis;
 
 public class RandomAPI
 {
